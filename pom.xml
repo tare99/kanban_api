@@ -188,6 +188,7 @@
         <configuration>
           <excludes>
             <exclude>**/*Config.class</exclude>
+            <exclude>**/*Application.class</exclude>
             <exclude>**/api/doc/**</exclude>
             <exclude>**/api/model/**</exclude>
             <exclude>**/api/response/**</exclude>

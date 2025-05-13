@@ -30,11 +30,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-m2-
 
-      - name: Maven clean & verify
+      - name: Maven clean & verify & Enforce code coverage ≥ 80%
         run: mvn clean verify -B
-
-      - name: Enforce code coverage ≥ 80%
-        run: mvn jacoco:check -B
 
   docker-build:
     needs: build-and-test

@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-class TaskServiceIT extends IntegrationBaseIT {
+class TaskServiceTest extends IntegrationBaseIT {
   @Autowired private TaskService taskService;
 
   private Task createAndSaveSampleTask() {

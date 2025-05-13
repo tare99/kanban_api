@@ -38,6 +38,7 @@ OpenAPI is available at http://localhost:8080/swagger-ui
 # Frontend
 
 Front end is deployed at https://kanban-task-manager-frontend.lovable.app/. It is using localhost:8080 to fetch the backend from your local machine, so make sure the app is running on your machine.
+Note that the front end is mostly generate by Lovable (vibe coding) just to visually demonstrate the API.
 
 # WebSocket listener helper
 

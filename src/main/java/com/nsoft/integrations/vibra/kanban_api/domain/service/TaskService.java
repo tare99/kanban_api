@@ -10,12 +10,17 @@ import com.nsoft.integrations.vibra.kanban_api.domain.model.Task;
 import com.nsoft.integrations.vibra.kanban_api.domain.repository.TaskRepository;
 import com.nsoft.integrations.vibra.kanban_api.domain.repository.TaskRepository.TaskSpecifications;
 import java.io.IOException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StopWatch;
 
 @Service
+@Slf4j
+@Transactional
 public class TaskService {
   private final TaskRepository taskRepository;
 
@@ -25,7 +30,13 @@ public class TaskService {
 
   public Page<Task> findAll(TaskStatus status, Pageable pageable) {
     Specification<Task> spec = Specification.where(TaskSpecifications.hasStatus(status));
-    return taskRepository.findAll(spec, pageable);
+
+    StopWatch stopWatch = new StopWatch();
+    stopWatch.start();
+    Page<Task> all = taskRepository.findAll(spec, pageable);
+    stopWatch.stop();
+    log.info("Time: {}", stopWatch.getTotalTimeMillis());
+    return all;
   }
 
   public Task findById(Long id) {

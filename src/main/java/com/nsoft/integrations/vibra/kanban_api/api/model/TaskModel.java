@@ -78,9 +78,7 @@ public class TaskModel extends RepresentationModel<TaskModel> {
             linkTo(methodOn(TaskController.class).patch(task.getId(), null))
                 .withRel("patch")
                 .withType(HttpMethod.PATCH.name()));
-      } catch (JsonPatchException e) {
-        throw new RuntimeException(e);
-      } catch (IOException e) {
+      } catch (JsonPatchException | IOException e) {
         throw new RuntimeException(e);
       }
       model.add(

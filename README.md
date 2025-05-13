@@ -28,6 +28,7 @@ Other: GraphQL, Jacoco for CI test coverage check
 2. Run docker-compose up --build in root folder
 3. Application will be available on port 8080 
 4. To generate JWT, just go to https://jwt.io/ and generate one using the jwt.secret in application.properties and send it as header "Bearer {token value}"
+
    JWT secret on the frontend is hard-coded, so if you change it here on the backend, the front will not work
 
 # OpenAPI

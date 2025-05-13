@@ -179,8 +179,15 @@
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.8.13</version>
+        <configuration>
+          <excludes>
+            <exclude>**/*Config.class</exclude>
+            <exclude>**/*Controller.class</exclude>
+          </excludes>
+        </configuration>
         <executions>
           <execution>
+            <id>prepare-agent</id>
             <goals>
               <goal>prepare-agent</goal>
             </goals>
@@ -199,10 +206,6 @@
               <goal>check</goal>
             </goals>
             <configuration>
-              <excludes>
-                <exclude>**/*Config.class</exclude>
-                <exclude>**/*Controller.class</exclude>
-              </excludes>
               <rules>
                 <rule>
                   <element>BUNDLE</element>

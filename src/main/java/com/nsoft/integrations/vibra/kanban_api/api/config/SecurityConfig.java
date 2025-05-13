@@ -42,7 +42,6 @@ public class SecurityConfig {
                     .anyRequest()
                     .permitAll())
         .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
-
     return http.build();
   }
 

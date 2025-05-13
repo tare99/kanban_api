@@ -181,18 +181,27 @@
         <version>0.8.13</version>
         <executions>
           <execution>
-            <goals><goal>prepare-agent</goal></goals>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
           </execution>
           <execution>
             <id>report</id>
             <phase>verify</phase>
-            <goals><goal>report</goal></goals>
+            <goals>
+              <goal>report</goal>
+            </goals>
           </execution>
           <execution>
             <id>check</id>
             <phase>verify</phase>
-            <goals><goal>check</goal></goals>
+            <goals>
+              <goal>check</goal>
+            </goals>
             <configuration>
+              <excludes>
+                <exclude>**/*Config.class</exclude>
+              </excludes>
               <rules>
                 <rule>
                   <element>BUNDLE</element>

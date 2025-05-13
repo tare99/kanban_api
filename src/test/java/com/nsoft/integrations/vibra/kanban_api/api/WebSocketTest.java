@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nsoft.integrations.vibra.kanban_api.api.event.TaskEvent;
 import com.nsoft.integrations.vibra.kanban_api.domain.enumeration.TaskPriority;
+import com.nsoft.integrations.vibra.kanban_api.domain.integration.IntegrationBaseIT;
 import com.nsoft.integrations.vibra.kanban_api.domain.model.Task;
 import java.lang.reflect.Type;
 import java.util.List;
@@ -31,7 +32,7 @@ import org.springframework.web.socket.sockjs.client.WebSocketTransport;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class WebSocketTest {
+class WebSocketTest extends IntegrationBaseIT {
 
   private final BlockingQueue<TaskEvent> blockingQueue = new LinkedBlockingQueue<>();
   @Autowired private ObjectMapper objectMapper;

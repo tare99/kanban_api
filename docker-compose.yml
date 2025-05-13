@@ -35,6 +35,7 @@ services:
       dockerfile: Dockerfile
     image: kanban-api:latest
     container_name: kanban-api
+    restart: on-failure
     depends_on:
       - mysql
     ports:

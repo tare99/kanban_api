@@ -4,6 +4,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import com.github.fge.jsonpatch.JsonPatchException;
+import com.nsoft.integrations.vibra.kanban_api.api.doc.PagedDoc;
 import com.nsoft.integrations.vibra.kanban_api.api.doc.TaskDoc;
 import com.nsoft.integrations.vibra.kanban_api.api.event.TaskEvent;
 import com.nsoft.integrations.vibra.kanban_api.api.model.TaskModel;
@@ -71,7 +72,7 @@ public class TaskController {
         @ApiResponse(
             responseCode = "200",
             description = "List of tasks retrieved",
-            content = @Content(schema = @Schema(implementation = TaskModel.class))),
+            content = @Content(schema = @Schema(implementation = PagedDoc.class))),
         @ApiResponse(
             responseCode = "500",
             description = "Internal server error",
@@ -172,7 +173,7 @@ public class TaskController {
     Task task = toEntity(id, updateTaskRequest);
     Task updatedTask = taskService.update(id, task);
     TaskModel taskModel = taskModelAssembler.toModel(updatedTask);
-    simpMessagingTemplate.convertAndSend("/topic/tasks", new TaskEvent("UPDATED", task));
+    simpMessagingTemplate.convertAndSend("/topic/tasks", new TaskEvent("UPDATED", updatedTask));
     return ResponseEntity.ok(taskModel);
   }
 
